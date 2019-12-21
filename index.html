@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Christmas Treasure Hunt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/queries.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+    <link rel="icon" type="image/png" href="resources/img/santa-hat.png">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="row">
+                <img src="resources/img/santa-hat.png" alt="Santa Hat" class="logo">
+            </div>
+        </nav>
+        <div class="hero-text-box">
+            <h1>Merry Christmas<br>
+                Beth & Dan!</h1>
+            <h4>
+                Enter the correct value in every box! If you're right, a phrase will appear! Text me the phrase to win
+                your prize!
+            </h4>
+        </div>
+    </header>
+
+    <section class="section-form">
+        <div class="row">
+            <h2>Answers!</h2>
+        </div>
+        <div class="row">
+            <form method="POST" onsubmit="myFunction()" class="contact-form">
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="q1">What is 2 + 2?</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="text" name="q1" id="q1" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="button" value="Check answers!" style="width: 50%;" onclick="myFunction()"></input>
+                    </div>
+                    <div class="row">
+                        <div class="col answer-label">
+                            <p id="result" style="visibility: hidden;">One of your answers is wrong!</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="row">
+            <p>
+                Built by Joe Schofield
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const answers = {
+            q1: '4'
+        }
+        function myFunction() {
+            let isCorrect = true;
+
+            Object.keys(answers).forEach(a => {
+                if(document.getElementById(a).value !== answers[a]) {
+                    isCorrect = false;
+                }
+            });
+
+            if (isCorrect) {
+                document.getElementById("result").innerHTML = "You got it! Text me the following phrase: </br> \"It's a Christmas miracle! We did it! Joe & Mims are the best!\""
+            }
+
+            document.getElementById("result").style.visibility = "visible";
+        }
+    </script>
+</body>
+
+</html>
